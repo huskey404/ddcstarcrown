@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ddcstarcrown</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: 'Roboto Mono', monospace;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        #timer {
+            font-size: 36px;
+            margin-top: 20px;
+        }
+        #youtubeEmbed {
+            position: fixed;
+            width: 1px;
+            height: 1px;
+            top: -1px;
+            left: -1px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Last message sent by ddcstarcrown</h1>
+    <h1 id="timer"></h1>
+
+    <iframe id="youtubeEmbed" src="https://www.youtube-nocookie.com/embed/MGzhKV8SVIk?autoplay=1"></iframe>
+
+    <script>
+        // Set the target date (April 24, 2024, 8:26 PM PDT)
+        var targetDate = new Date('2024-04-24T20:26:00-07:00');
+
+        // Update the timer every second
+        setInterval(updateTimer, 1000);
+
+        function updateTimer() {
+            var now = new Date().getTime();
+            var difference = now - targetDate.getTime();
+
+            // Calculate time units
+            var years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365));
+            var months = Math.floor((difference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            var days = Math.floor((difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Display the timer
+            document.getElementById("timer").innerHTML = years + "y " + months + "mo " + days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+        }
+
+        // Initial call to update timer on page load
+        updateTimer();
+    </script>
+</body>
+</html>
